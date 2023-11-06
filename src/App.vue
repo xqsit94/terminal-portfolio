@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import Terminal from '@/components/Terminal.vue'
+</script>
+
 <template>
-  <h1 class="text-2xl underline">Terminal Portfolio</h1>
+  <Terminal />
 </template>
