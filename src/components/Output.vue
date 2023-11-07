@@ -3,17 +3,21 @@ import TerminalUser from '@/components/TerminalUser.vue'
 import { useTerminalStore } from '@/stores/TerminalStore'
 import Welcome from '@/components/commands/Welcome.vue'
 import CommandNotFound from '@/components/commands/CommandNotFound.vue'
+import Help from '@/components/commands/Help.vue'
 import { storeToRefs } from 'pinia'
 import Clear from '@/components/commands/Clear.vue'
+import { CommandEnum } from '@/utils/constants'
 
 const { cmdHistory } = storeToRefs(useTerminalStore())
 
 const commands = (cmd: string) => {
   switch (cmd) {
-    case 'welcome':
+    case CommandEnum.WELCOME:
       return Welcome
-    case 'clear':
+    case CommandEnum.CLEAR:
       return Clear
+    case CommandEnum.HELP:
+      return Help
     default:
       return CommandNotFound
   }

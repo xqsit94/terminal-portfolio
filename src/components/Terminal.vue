@@ -16,17 +16,17 @@ const terminalInput = ref<HTMLInputElement | null>(null)
  */
 const { addCmdHistory } = useTerminalStore()
 
-const handleDivClick = () => {
+const focusInput = () => {
   terminalInput.value?.focus()
 }
 
 watchEffect(() => {
   if (container.value) {
-    container.value.addEventListener('click', handleDivClick)
+    container.value.addEventListener('click', focusInput)
   }
 })
 
-const handleInputKeyDown = (event: KeyboardEvent) => {
+const handleInputKeyDown = async (event: KeyboardEvent) => {
   if (event.key === 'Enter') {
     handleEnter()
   }
@@ -40,7 +40,7 @@ const handleEnter = () => {
 </script>
 
 <template>
-  <div ref="container" class="h-screen px-4 py-3">
+  <div ref="container" class="min-h-screen px-4 py-3">
     <Output />
     <form class="flex" @submit.prevent>
       <label for="terminal-input">

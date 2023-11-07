@@ -1,9 +1,14 @@
 import { defineStore } from 'pinia'
 
 export const useTerminalStore = defineStore('terminal', {
-  state: () => ({
-    cmdHistory: ['welcome']
-  }),
+  state: () =>
+    <
+      {
+        cmdHistory: string[]
+      }
+    >{
+      cmdHistory: ['welcome']
+    },
 
   actions: {
     addCmdHistory(cmd: string) {

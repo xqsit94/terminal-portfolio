@@ -5,3 +5,5 @@ const { clearCmdHistory } = useTerminalStore()
 
 clearCmdHistory()
 </script>
+
+<template></template>
