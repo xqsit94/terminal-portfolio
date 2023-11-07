@@ -26,7 +26,7 @@ const commands = (cmd: string) => {
       <TerminalUser />
       <div class="flex-grow">{{ cmd }}</div>
     </div>
-    <div class="mb-2">
+    <div v-if="cmd" class="mb-2">
       <component :is="commands(cmd)" :cmd="cmd" />
     </div>
   </div>
