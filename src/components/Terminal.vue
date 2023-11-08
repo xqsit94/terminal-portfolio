@@ -3,6 +3,7 @@ import TerminalUser from '@/components/TerminalUser.vue'
 import { ref, watchEffect } from 'vue'
 import { useTerminalStore } from '@/stores/TerminalStore'
 import Output from '@/components/Output.vue'
+import { storeToRefs } from 'pinia'
 
 /**
  * Component Variables
@@ -14,7 +15,8 @@ const terminalInput = ref<HTMLInputElement | null>(null)
 /**
  * Store Variables
  */
-const { addCmdHistory } = useTerminalStore()
+const { cmdHistory, pointer } = storeToRefs(useTerminalStore())
+const { addCmdHistory, clearCmdHistory, setPointer } = useTerminalStore()
 
 const focusInput = () => {
   terminalInput.value?.focus()
@@ -24,11 +26,44 @@ watchEffect(() => {
   if (container.value) {
     container.value.addEventListener('click', focusInput)
   }
+
+  // cleanup
+  return () => {
+    if (container.value) {
+      container.value.removeEventListener('click', focusInput)
+    }
+  }
 })
 
-const handleInputKeyDown = async (event: KeyboardEvent) => {
+const handleInputKeyDown = (event: KeyboardEvent) => {
+  // if Enter
   if (event.key === 'Enter') {
     handleEnter()
+  }
+
+  // if Ctrl + L
+  if (event.ctrlKey && event.key === 'l') {
+    clearCmdHistory()
+  }
+
+  // if ArrowUp
+  if (event.key === 'ArrowUp') {
+    if (pointer.value >= cmdHistory.value.length) return
+
+    if (pointer.value + 1 === cmdHistory.value.length) return
+
+    setPointer(pointer.value + 1)
+    input.value = cmdHistory.value[cmdHistory.value.length - pointer.value - 1]
+  }
+
+  // if ArrowDown
+  if (event.key === 'ArrowDown') {
+    if (pointer.value <= -1) return
+
+    if (pointer.value - 1 === -1) return
+
+    setPointer(pointer.value - 1)
+    input.value = cmdHistory.value[cmdHistory.value.length - pointer.value - 1]
   }
 }
 
@@ -36,6 +71,7 @@ const handleEnter = () => {
   const value = input.value.trim().toLowerCase()
   addCmdHistory(value)
   input.value = ''
+  setPointer(-1)
 }
 </script>
 

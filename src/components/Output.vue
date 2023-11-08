@@ -4,6 +4,7 @@ import { useTerminalStore } from '@/stores/TerminalStore'
 import Welcome from '@/components/commands/Welcome.vue'
 import CommandNotFound from '@/components/commands/CommandNotFound.vue'
 import Help from '@/components/commands/Help.vue'
+import History from '@/components/commands/History.vue'
 import { storeToRefs } from 'pinia'
 import Clear from '@/components/commands/Clear.vue'
 import { CommandEnum } from '@/utils/constants'
@@ -18,6 +19,8 @@ const commands = (cmd: string) => {
       return Clear
     case CommandEnum.HELP:
       return Help
+    case CommandEnum.HISTORY:
+      return History
     default:
       return CommandNotFound
   }

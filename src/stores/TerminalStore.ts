@@ -1,14 +1,10 @@
 import { defineStore } from 'pinia'
 
 export const useTerminalStore = defineStore('terminal', {
-  state: () =>
-    <
-      {
-        cmdHistory: string[]
-      }
-    >{
-      cmdHistory: ['welcome']
-    },
+  state: () => ({
+    cmdHistory: [] as string[],
+    pointer: -1
+  }),
 
   actions: {
     addCmdHistory(cmd: string) {
@@ -17,6 +13,10 @@ export const useTerminalStore = defineStore('terminal', {
 
     clearCmdHistory() {
       this.cmdHistory = []
+    },
+
+    setPointer(index: number) {
+      this.pointer = index
     }
   }
 })

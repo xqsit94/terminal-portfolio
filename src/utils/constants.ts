@@ -1,7 +1,12 @@
 export enum CommandEnum {
   HELP = 'help',
   CLEAR = 'clear',
-  WELCOME = 'welcome'
+  WELCOME = 'welcome',
+  HISTORY = 'history',
+
+  UP_ARROW = 'Up arrow',
+  DOWN_ARROW = 'Down arrow',
+  CTRL_L = 'Ctrl + L'
 }
 
 export const commands = [
@@ -16,5 +21,24 @@ export const commands = [
   {
     name: CommandEnum.WELCOME,
     description: 'welcome message'
+  },
+  {
+    name: CommandEnum.HISTORY,
+    description: 'check the history of commands'
+  },
+  {
+    name: CommandEnum.UP_ARROW,
+    description: 'go back in history',
+    type: 'shortcut'
+  },
+  {
+    name: CommandEnum.DOWN_ARROW,
+    description: 'go forward in history',
+    type: 'shortcut'
+  },
+  {
+    name: CommandEnum.CTRL_L,
+    description: 'clear the terminal',
+    type: 'shortcut'
   }
 ]
