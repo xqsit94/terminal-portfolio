@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import TerminalUser from '@/components/TerminalUser.vue'
-import { ref, watchEffect } from 'vue'
+import { ref, watch, watchEffect } from 'vue'
 import { useTerminalStore } from '@/stores/TerminalStore'
 import Output from '@/components/Output.vue'
 import { storeToRefs } from 'pinia'
@@ -20,6 +20,12 @@ const { addCmdHistory, clearCmdHistory, setPointer } = useTerminalStore()
 
 const focusInput = () => {
   terminalInput.value?.focus()
+}
+
+const setCursorToEnd = () => {
+  setTimeout(() => {
+    focusInput()
+  }, 1)
 }
 
 watchEffect(() => {
@@ -54,6 +60,7 @@ const handleInputKeyDown = (event: KeyboardEvent) => {
 
     setPointer(pointer.value + 1)
     input.value = cmdHistory.value[cmdHistory.value.length - pointer.value - 1]
+    terminalInput.value?.blur()
   }
 
   // if ArrowDown
@@ -64,6 +71,7 @@ const handleInputKeyDown = (event: KeyboardEvent) => {
 
     setPointer(pointer.value - 1)
     input.value = cmdHistory.value[cmdHistory.value.length - pointer.value - 1]
+    terminalInput.value?.blur()
   }
 }
 
@@ -71,8 +79,15 @@ const handleEnter = () => {
   const value = input.value.trim().toLowerCase()
   addCmdHistory(value)
   input.value = ''
-  setPointer(-1)
 }
+
+watch([input, terminalInput, pointer], () => {
+  if (input.value === '') {
+    setPointer(-1)
+    return
+  }
+  setCursorToEnd()
+})
 </script>
 
 <template>

@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 
 export const useTerminalStore = defineStore('terminal', {
   state: () => ({
-    cmdHistory: [] as string[],
+    cmdHistory: ['welcome'] as string[],
     pointer: -1
   }),
 
