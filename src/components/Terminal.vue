@@ -4,6 +4,7 @@ import { ref, watch, watchEffect } from 'vue'
 import { useTerminalStore } from '@/stores/TerminalStore'
 import Output from '@/components/Output.vue'
 import { storeToRefs } from 'pinia'
+import { commands } from '@/utils/constants'
 
 /**
  * Component Variables
@@ -11,6 +12,7 @@ import { storeToRefs } from 'pinia'
 const input = ref<string>('')
 const container = ref<HTMLDivElement | null>(null)
 const terminalInput = ref<HTMLInputElement | null>(null)
+const suggestions = ref<string[]>([])
 
 /**
  * Store Variables
@@ -54,6 +56,7 @@ const handleInputKeyDown = (event: KeyboardEvent) => {
 
   // if ArrowUp
   if (event.key === 'ArrowUp') {
+    event.preventDefault()
     if (pointer.value >= cmdHistory.value.length) return
 
     if (pointer.value + 1 === cmdHistory.value.length) return
@@ -65,6 +68,7 @@ const handleInputKeyDown = (event: KeyboardEvent) => {
 
   // if ArrowDown
   if (event.key === 'ArrowDown') {
+    event.preventDefault()
     if (pointer.value <= -1) return
 
     if (pointer.value - 1 === -1) return
@@ -72,6 +76,19 @@ const handleInputKeyDown = (event: KeyboardEvent) => {
     setPointer(pointer.value - 1)
     input.value = cmdHistory.value[cmdHistory.value.length - pointer.value - 1]
     terminalInput.value?.blur()
+  }
+
+  // if Tab or Ctrl + I (autocomplete)
+  if (event.key === 'Tab' || (event.ctrlKey && event.key === 'i')) {
+    event.preventDefault()
+    const value = input.value.trim().toLowerCase()
+    const filteredCommands = commands.filter((cmd) => cmd.name.startsWith(value))
+    if (filteredCommands.length === 1) {
+      input.value = filteredCommands[0].name
+      setCursorToEnd()
+    } else {
+      suggestions.value = filteredCommands.map((cmd) => cmd.name)
+    }
   }
 }
 
@@ -83,6 +100,7 @@ const handleEnter = () => {
 
 watch([input, terminalInput, pointer], () => {
   if (input.value === '') {
+    suggestions.value = []
     setPointer(-1)
     return
   }
@@ -111,5 +129,8 @@ watch([input, terminalInput, pointer], () => {
         @keydown="handleInputKeyDown"
       />
     </form>
+    <div v-if="suggestions.length > 0" class="flex space-x-3">
+      <div v-for="suggestion in suggestions" :key="suggestion">{{ suggestion }}</div>
+    </div>
   </div>
 </template>

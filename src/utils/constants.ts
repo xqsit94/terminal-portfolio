@@ -4,6 +4,7 @@ export enum CommandEnum {
   WELCOME = 'welcome',
   HISTORY = 'history',
 
+  TAB = 'Tab or Ctrl + i',
   UP_ARROW = 'Up arrow',
   DOWN_ARROW = 'Down arrow',
   CTRL_L = 'Ctrl + L'
@@ -25,6 +26,11 @@ export const commands = [
   {
     name: CommandEnum.HISTORY,
     description: 'check the history of commands'
+  },
+  {
+    name: CommandEnum.TAB,
+    description: 'auto complete the command',
+    type: 'shortcut'
   },
   {
     name: CommandEnum.UP_ARROW,
