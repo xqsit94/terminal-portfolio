@@ -3,6 +3,7 @@ export enum CommandEnum {
   CLEAR = 'clear',
   WELCOME = 'welcome',
   HISTORY = 'history',
+  THEME = 'themes',
 
   TAB = 'Tab or Ctrl + i',
   UP_ARROW = 'Up arrow',
@@ -26,6 +27,10 @@ export const commands = [
   {
     name: CommandEnum.HISTORY,
     description: 'check the history of commands'
+  },
+  {
+    name: CommandEnum.THEME,
+    description: 'check available themes'
   },
   {
     name: CommandEnum.TAB,

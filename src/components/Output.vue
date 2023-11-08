@@ -8,6 +8,7 @@ import History from '@/components/commands/History.vue'
 import { storeToRefs } from 'pinia'
 import Clear from '@/components/commands/Clear.vue'
 import { CommandEnum } from '@/utils/constants'
+import Themes from '@/components/commands/Themes.vue'
 
 const { cmdHistory } = storeToRefs(useTerminalStore())
 
@@ -21,6 +22,8 @@ const commands = (cmd: string) => {
       return Help
     case CommandEnum.HISTORY:
       return History
+    case CommandEnum.THEME:
+      return Themes
     default:
       return CommandNotFound
   }
