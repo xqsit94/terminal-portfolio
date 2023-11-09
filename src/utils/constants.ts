@@ -22,6 +22,26 @@ export enum CommandEnum {
 
 export const commands = [
   {
+    name: CommandEnum.ABOUT,
+    description: 'about me'
+  },
+  {
+    name: CommandEnum.PROJECTS,
+    description: 'few projects I have developed'
+  },
+  {
+    name: CommandEnum.SKILLS,
+    description: 'check my skills'
+  },
+  {
+    name: CommandEnum.EXPERIENCE,
+    description: 'check my experience'
+  },
+  {
+    name: CommandEnum.EDUCATION,
+    description: 'check my education'
+  },
+  {
     name: CommandEnum.GUI,
     description: 'open my portfolio GUI'
   },

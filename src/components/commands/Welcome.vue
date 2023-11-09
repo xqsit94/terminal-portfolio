@@ -16,7 +16,7 @@ import Separator from '@/components/Separator.vue'
         }}
   </pre
       >
-      <p>Welcome to my terminal portfolio</p>
+      <p>Welcome to my interactive terminal portfolio</p>
       <p>Here you can find some information about me and my projects</p>
       <Separator>----</Separator>
       <p>Use the command `<span class="text-primary">help</span>` to get started</p>

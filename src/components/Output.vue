@@ -15,6 +15,8 @@ import Echo from '@/components/commands/Echo.vue'
 import Pwd from '@/components/commands/Pwd.vue'
 import Gui from '@/components/commands/Gui.vue'
 import WhoAmI from '@/components/commands/WhoAmI.vue'
+import About from '@/components/commands/About.vue'
+import Projects from '@/components/commands/Projects.vue'
 
 const { cmdHistory } = storeToRefs(useTerminalStore())
 
@@ -31,6 +33,10 @@ const commands = (cmd: string) => {
   }
 
   switch (command) {
+    case CommandEnum.ABOUT:
+      return About
+    case CommandEnum.PROJECTS:
+      return Projects
     case CommandEnum.GUI:
       return Gui
     case CommandEnum.WELCOME:
