@@ -5,5 +5,5 @@ defineProps<{
 </script>
 
 <template>
-  <div>usage: {{ cmd }}</div>
+  <div>Usage: {{ cmd }}</div>
 </template>
