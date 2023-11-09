@@ -12,6 +12,9 @@ import { CommandEnum, commands as availableCommands } from '@/utils/constants'
 import Themes from '@/components/commands/Themes.vue'
 import Usage from '@/components/commands/Usage.vue'
 import Echo from '@/components/commands/Echo.vue'
+import Pwd from '@/components/commands/Pwd.vue'
+import Gui from '@/components/commands/Gui.vue'
+import WhoAmI from '@/components/commands/WhoAmI.vue'
 
 const { cmdHistory } = storeToRefs(useTerminalStore())
 
@@ -28,6 +31,8 @@ const commands = (cmd: string) => {
   }
 
   switch (command) {
+    case CommandEnum.GUI:
+      return Gui
     case CommandEnum.WELCOME:
       return Welcome
     case CommandEnum.CLEAR:
@@ -36,10 +41,14 @@ const commands = (cmd: string) => {
       return Help
     case CommandEnum.HISTORY:
       return History
+    case CommandEnum.WHOAMI:
+      return WhoAmI
     case CommandEnum.THEME:
       return Themes
     case CommandEnum.ECHO:
       return Echo
+    case CommandEnum.PWD:
+      return Pwd
     default:
       return CommandNotFound
   }

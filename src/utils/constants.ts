@@ -1,10 +1,18 @@
 export enum CommandEnum {
+  ABOUT = 'about',
+  PROJECTS = 'projects',
+  SKILLS = 'skills',
+  EXPERIENCE = 'experience',
+  EDUCATION = 'education',
+  GUI = 'gui',
   HELP = 'help',
   CLEAR = 'clear',
   WELCOME = 'welcome',
   HISTORY = 'history',
+  WHOAMI = 'whoami',
   THEME = 'themes',
   ECHO = 'echo',
+  PWD = 'pwd',
 
   TAB = 'Tab or Ctrl + i',
   UP_ARROW = 'Up arrow',
@@ -13,6 +21,10 @@ export enum CommandEnum {
 }
 
 export const commands = [
+  {
+    name: CommandEnum.GUI,
+    description: 'open my portfolio GUI'
+  },
   {
     name: CommandEnum.HELP,
     description: 'check all available commands'
@@ -30,6 +42,10 @@ export const commands = [
     description: 'check the history of commands'
   },
   {
+    name: CommandEnum.WHOAMI,
+    description: 'prints current user'
+  },
+  {
     name: CommandEnum.THEME,
     description: 'check available themes',
     requiresArgs: true
@@ -38,6 +54,10 @@ export const commands = [
     name: CommandEnum.ECHO,
     description: 'echo the string',
     requiresArgs: true
+  },
+  {
+    name: CommandEnum.PWD,
+    description: 'print the current working directory'
   },
   {
     name: CommandEnum.TAB,
@@ -60,3 +80,5 @@ export const commands = [
     type: 'shortcut'
   }
 ]
+
+export const guiUrl = 'https://lifeofdev.com'
