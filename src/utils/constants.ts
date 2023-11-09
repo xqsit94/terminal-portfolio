@@ -4,6 +4,7 @@ export enum CommandEnum {
   WELCOME = 'welcome',
   HISTORY = 'history',
   THEME = 'themes',
+  ECHO = 'echo',
 
   TAB = 'Tab or Ctrl + i',
   UP_ARROW = 'Up arrow',
@@ -30,7 +31,13 @@ export const commands = [
   },
   {
     name: CommandEnum.THEME,
-    description: 'check available themes'
+    description: 'check available themes',
+    requiresArgs: true
+  },
+  {
+    name: CommandEnum.ECHO,
+    description: 'echo the string',
+    requiresArgs: true
   },
   {
     name: CommandEnum.TAB,
