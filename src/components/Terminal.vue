@@ -30,6 +30,11 @@ const setCursorToEnd = () => {
   }, 1)
 }
 
+const resetSuggestions = () => {
+  suggestions.value = []
+  setPointer(-1)
+}
+
 watchEffect(() => {
   if (container.value) {
     container.value.addEventListener('click', focusInput)
@@ -96,15 +101,15 @@ const handleEnter = () => {
   const value = input.value.trim().toLowerCase()
   addCmdHistory(value)
   input.value = ''
+  terminalInput.value?.blur()
 }
 
 watch([input, terminalInput, pointer], () => {
+  setCursorToEnd()
   if (input.value === '') {
-    suggestions.value = []
-    setPointer(-1)
+    resetSuggestions()
     return
   }
-  setCursorToEnd()
 })
 </script>
 
