@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { useUserAgent } from '@/utils/user-agent'
+import Links from '@/components/Links.vue'
+
 const projects = [
   {
     name: 'Lifeofdev - Personal Blog',
@@ -16,17 +19,20 @@ const projects = [
     url: 'https://github.com/xqsit94/gridsome-starter-geek-blog/'
   }
 ]
+
+const { isMac } = useUserAgent()
 </script>
 
 <template>
   <div class="grid gap-2 mt-2 mb-3">
     <h5>Here are some of my projects:</h5>
     <div v-for="(project, i) in projects" :key="project.name" class="grid gap-0.5">
-      <a :href="project.url" target="_blank" rel="noopener noreferrer" class="text-primary">
-        <span class="mr-2">{{ i + 1 }}.</span>
-        <span class="border-b border-dashed border-primary">{{ project.name }}</span>
-      </a>
-      <p class="text-accent">{{ project.description }}</p>
+      <Links
+        :i="i + 1"
+        :name="project.name"
+        :description="project.description"
+        :url="project.url"
+      />
     </div>
   </div>
 </template>
