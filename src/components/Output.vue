@@ -18,6 +18,8 @@ import WhoAmI from '@/components/commands/WhoAmI.vue'
 import About from '@/components/commands/About.vue'
 import Projects from '@/components/commands/Projects.vue'
 import SetName from '@/components/commands/SetName.vue'
+import Education from '@/components/commands/Education.vue'
+import Experience from '@/components/commands/Experience.vue'
 
 const { cmdHistory } = storeToRefs(useTerminalStore())
 
@@ -38,6 +40,10 @@ const commands = (cmd: string) => {
       return About
     case CommandEnum.PROJECTS:
       return Projects
+    case CommandEnum.EXPERIENCE:
+      return Experience
+    case CommandEnum.EDUCATION:
+      return Education
     case CommandEnum.GUI:
       return Gui
     case CommandEnum.WELCOME:

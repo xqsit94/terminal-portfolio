@@ -1,7 +1,6 @@
 export enum CommandEnum {
   ABOUT = 'about',
   PROJECTS = 'projects',
-  SKILLS = 'skills',
   EXPERIENCE = 'experience',
   EDUCATION = 'education',
   GUI = 'gui',
@@ -29,10 +28,6 @@ export const commands = [
   {
     name: CommandEnum.PROJECTS,
     description: 'few projects I have developed'
-  },
-  {
-    name: CommandEnum.SKILLS,
-    description: 'check my skills'
   },
   {
     name: CommandEnum.EXPERIENCE,

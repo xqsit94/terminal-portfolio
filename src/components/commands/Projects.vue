@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useUserAgent } from '@/utils/user-agent'
 import Links from '@/components/Links.vue'
 
 const projects = [
@@ -19,8 +18,6 @@ const projects = [
     url: 'https://github.com/xqsit94/gridsome-starter-geek-blog/'
   }
 ]
-
-const { isMac } = useUserAgent()
 </script>
 
 <template>
