@@ -17,6 +17,7 @@ import Gui from '@/components/commands/Gui.vue'
 import WhoAmI from '@/components/commands/WhoAmI.vue'
 import About from '@/components/commands/About.vue'
 import Projects from '@/components/commands/Projects.vue'
+import SetName from '@/components/commands/SetName.vue'
 
 const { cmdHistory } = storeToRefs(useTerminalStore())
 
@@ -55,6 +56,8 @@ const commands = (cmd: string) => {
       return Echo
     case CommandEnum.PWD:
       return Pwd
+    case CommandEnum.SETNAME:
+      return SetName
     default:
       return CommandNotFound
   }

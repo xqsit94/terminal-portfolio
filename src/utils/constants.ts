@@ -13,6 +13,7 @@ export enum CommandEnum {
   THEME = 'themes',
   ECHO = 'echo',
   PWD = 'pwd',
+  SETNAME = 'setname',
 
   TAB = 'Tab or Ctrl + i',
   UP_ARROW = 'Up arrow',
@@ -78,6 +79,11 @@ export const commands = [
   {
     name: CommandEnum.PWD,
     description: 'print the current working directory'
+  },
+  {
+    name: CommandEnum.SETNAME,
+    description: 'set the username (replaces default `guest` with your name)',
+    requiresArgs: true
   },
   {
     name: CommandEnum.TAB,

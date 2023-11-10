@@ -98,7 +98,7 @@ const handleInputKeyDown = (event: KeyboardEvent) => {
 }
 
 const handleEnter = () => {
-  const value = input.value.trim().toLowerCase()
+  const value = input.value.trim()
   addCmdHistory(value)
   input.value = ''
   terminalInput.value?.blur()

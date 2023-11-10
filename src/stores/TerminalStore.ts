@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 
 export const useTerminalStore = defineStore('terminal', {
   state: () => ({
+    username: localStorage.getItem('username') || 'guest',
     cmdHistory: ['welcome'] as string[],
     pointer: -1
   }),
@@ -17,6 +18,11 @@ export const useTerminalStore = defineStore('terminal', {
 
     setPointer(index: number) {
       this.pointer = index
+    },
+
+    setUsername(username: string) {
+      this.username = username
+      localStorage.setItem('username', username)
     }
   }
 })
