@@ -27,7 +27,7 @@ export const commands = [
   },
   {
     name: CommandEnum.PROJECTS,
-    description: 'few projects I have developed'
+    description: 'few projects that I have developed'
   },
   {
     name: CommandEnum.EXPERIENCE,
@@ -101,5 +101,3 @@ export const commands = [
     type: 'shortcut'
   }
 ]
-
-export const guiUrl = 'https://lifeofdev.com'

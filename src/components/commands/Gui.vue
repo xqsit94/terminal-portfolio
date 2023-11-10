@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { guiUrl } from '@/utils/constants'
+const guiUrl = 'https://lifeofdev.com'
 
 const openGui = () => {
   window.open(guiUrl, '_blank')

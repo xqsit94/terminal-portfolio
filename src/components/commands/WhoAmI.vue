@@ -1,3 +1,9 @@
+<script setup lang="ts">
+import { useTerminalStore } from '@/stores/TerminalStore'
+
+const { username } = useTerminalStore()
+</script>
+
 <template>
-  <div>guest</div>
+  <div>{{ username }}</div>
 </template>

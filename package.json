@@ -1,7 +1,11 @@
 {
   "name": "@xqsit94/terminal-portfolio",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
+  "author": {
+    "name": "xqsit94",
+    "url": "https://lifeofdev.com"
+  },
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check \"build-only {@}\" --",
