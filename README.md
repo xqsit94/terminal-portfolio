@@ -8,6 +8,7 @@ My personal portfolio, built with Vue 3, TypeScript and TailwindCSS.
 - Autocompletion
 - Command history
 - Multiple themes
+- Responsive design
 - PWA support
 
 ## Tech Stack

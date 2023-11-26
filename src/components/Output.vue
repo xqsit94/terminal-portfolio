@@ -72,7 +72,7 @@ const commands = (cmd: string) => {
 
 <template>
   <div v-for="(cmd, i) in cmdHistory" :key="i">
-    <div class="flex items-center">
+    <div class="flex-row md:flex items-center">
       <TerminalUser />
       <div class="flex-grow">{{ cmd }}</div>
     </div>
