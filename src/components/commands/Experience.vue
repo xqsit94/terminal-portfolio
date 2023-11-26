@@ -103,7 +103,7 @@ const educations = [
     <div v-for="education in educations" :key="education.name" class="grid gap-0.5 mt-2">
       <div class="text-primary font-semibold">{{ education.name }}</div>
       <p class="text-accent">{{ education.description }}</p>
-      <div v-if="education.stacks" class="flex space-x-2 mt-1">
+      <div v-if="education.stacks" class="flex-row md:flex md:space-x-2 mt-1">
         <div
           v-for="stack in education.stacks"
           :key="stack.name"

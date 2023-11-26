@@ -116,14 +116,14 @@ watch([input, terminalInput, pointer], () => {
 <template>
   <div ref="container" class="min-h-screen px-4 py-3">
     <Output />
-    <form class="flex" @submit.prevent>
+    <form class="flex-row md:flex" @submit.prevent>
       <label for="terminal-input">
         <TerminalUser />
       </label>
       <input
         v-model="input"
         ref="terminalInput"
-        class="flex-grow bg-transparent outline-none caret-primary font-medium"
+        class="w-full bg-transparent outline-none caret-primary font-medium"
         type="text"
         id="terminal-input"
         name="terminal-input"
