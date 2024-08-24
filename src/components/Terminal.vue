@@ -92,6 +92,10 @@ const handleInputKeyDown = (event: KeyboardEvent) => {
     )
     if (filteredCommands.length === 1) {
       input.value = filteredCommands[0].name
+      if (filteredCommands[0].requiresArgs) {
+        input.value += ' '
+      }
+
       setCursorToEnd()
     } else {
       suggestions.value = filteredCommands.map((cmd) => cmd.name)
