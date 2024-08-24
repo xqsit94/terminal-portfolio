@@ -87,7 +87,9 @@ const handleInputKeyDown = (event: KeyboardEvent) => {
   if (event.key === 'Tab' || (event.ctrlKey && event.key === 'i')) {
     event.preventDefault()
     const value = input.value.trim().toLowerCase()
-    const filteredCommands = commands.filter((cmd) => cmd.name.startsWith(value))
+    const filteredCommands = commands.filter(
+      (cmd) => cmd.name.startsWith(value) && cmd.type !== 'shortcut'
+    )
     if (filteredCommands.length === 1) {
       input.value = filteredCommands[0].name
       setCursorToEnd()
