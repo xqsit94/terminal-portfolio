@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useTerminalStore } from '@/stores/TerminalStore'
+import { computed } from 'vue'
 
 const props = defineProps<{
   args: string[]
@@ -7,9 +8,14 @@ const props = defineProps<{
 
 const { setUsername } = useTerminalStore()
 
-setUsername(props.args.join(' ').toLowerCase())
+const username = computed(() => {
+  const name = props.args.join(' ')
+  return name.trim() === '' ? 'guest' : name
+})
+
+setUsername(username.value.toLowerCase())
 </script>
 
 <template>
-  <div>Hello, {{ args.join(' ') }}!</div>
+  <div>Hello, {{ username }}!</div>
 </template>
